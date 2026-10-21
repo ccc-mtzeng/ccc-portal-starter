@@ -1,5 +1,0 @@
-{
-  "name": "Example app",
-  "description": "Lists the files in this app's own repo, to show the portal plumbing works.",
-  "isolation": "shadow"
-}
