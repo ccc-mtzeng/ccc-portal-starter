@@ -1,0 +1,37 @@
+/* Inside the portal this sheet is scoped to the app's shadow root.
+   The --portal-* variables come from the portal and follow light/dark mode;
+   the fallbacks are for standalone dev. */
+.example {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: var(--portal-font, system-ui, sans-serif);
+  color: var(--portal-ink, #17211c);
+}
+
+.example h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.example .lede {
+  color: var(--portal-muted, #5b6862);
+}
+
+.example .error {
+  color: var(--portal-danger, #a3362b);
+}
+
+.example ul {
+  padding-left: 20px;
+}
+
+.example button {
+  padding: 7px 14px;
+  font: inherit;
+  color: var(--portal-ink, #17211c);
+  background: var(--portal-surface, #fff);
+  border: 1px solid var(--portal-line, #d3dad5);
+  border-radius: 8px;
+  cursor: pointer;
+}

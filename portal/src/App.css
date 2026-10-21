@@ -1,0 +1,378 @@
+/*
+ * Design tokens. Custom properties inherit through shadow roots, so apps
+ * can opt in to the portal's look with var(--portal-*) without any setup.
+ */
+:root {
+  color-scheme: light;
+  --portal-bg: #f2f4f1;
+  --portal-surface: #ffffff;
+  --portal-ink: #17211c;
+  --portal-muted: #5b6862;
+  --portal-line: #d3dad5;
+  --portal-accent: #2e6a55;
+  --portal-accent-ink: #ffffff;
+  --portal-danger: #a3362b;
+  --portal-danger-bg: #f8e9e6;
+  --portal-tile-l: 0.9;
+  --portal-tile-c: 0.06;
+  --portal-tile-ink: #17211c;
+  --portal-radius: 8px;
+  --portal-font: "Public Sans", system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --portal-bg: #111714;
+    --portal-surface: #18201c;
+    --portal-ink: #e3e9e5;
+    --portal-muted: #97a39d;
+    --portal-line: #2b3631;
+    --portal-accent: #74b79a;
+    --portal-accent-ink: #0f1a15;
+    --portal-danger: #e58a7f;
+    --portal-danger-bg: #2c1a17;
+    --portal-tile-l: 0.36;
+    --portal-tile-c: 0.07;
+    --portal-tile-ink: #e3e9e5;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--portal-bg);
+  color: var(--portal-ink);
+  font-family: var(--portal-font);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  margin: 0;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+p {
+  margin: 0;
+}
+
+.muted {
+  color: var(--portal-muted);
+}
+
+:focus-visible {
+  outline: 2px solid var(--portal-accent);
+  outline-offset: 2px;
+}
+
+/* Buttons */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 7px 14px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--portal-ink);
+  text-decoration: none;
+  background: var(--portal-surface);
+  border: 1px solid var(--portal-line);
+  border-radius: var(--portal-radius);
+  cursor: pointer;
+}
+
+.btn:hover {
+  border-color: var(--portal-muted);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.btn-primary {
+  color: var(--portal-accent-ink);
+  background: var(--portal-accent);
+  border-color: var(--portal-accent);
+}
+
+.btn-primary:hover {
+  border-color: var(--portal-accent);
+  filter: brightness(1.08);
+}
+
+.btn-quiet {
+  background: transparent;
+  border-color: transparent;
+  color: var(--portal-muted);
+}
+
+.btn-quiet:hover {
+  color: var(--portal-ink);
+  border-color: transparent;
+  background: var(--portal-line);
+}
+
+.btn-wide {
+  width: 100%;
+  padding: 11px 16px;
+}
+
+/* Notices */
+
+.notice {
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid var(--portal-line);
+  border-radius: var(--portal-radius);
+  background: var(--portal-surface);
+}
+
+.notice-error {
+  color: var(--portal-danger);
+  background: var(--portal-danger-bg);
+  border-color: transparent;
+}
+
+/* Login */
+
+.login {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-panel {
+  width: 100%;
+  max-width: 340px;
+  display: grid;
+  gap: 20px;
+}
+
+.login-title {
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.login-lede {
+  color: var(--portal-muted);
+  margin-top: -8px;
+}
+
+/* Shell */
+
+.shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--portal-line);
+  background: var(--portal-bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.crumbs {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+
+.crumb-home {
+  padding: 0;
+  font: inherit;
+  font-weight: 650;
+  color: var(--portal-ink);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.crumb-sep {
+  color: var(--portal-line);
+}
+
+.crumb-current {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.user {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+  font-size: 14px;
+  color: var(--portal-muted);
+}
+
+.user img {
+  border-radius: 50%;
+}
+
+/* Launcher */
+
+.launcher {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 20px 64px;
+  display: grid;
+  gap: 24px;
+  align-content: start;
+}
+
+.launcher-head h1 {
+  font-size: 32px;
+}
+
+.empty {
+  max-width: 52ch;
+  color: var(--portal-muted);
+}
+
+.app-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--portal-line);
+}
+
+.app-list li {
+  border-bottom: 1px solid var(--portal-line);
+}
+
+.app-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 8px;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.app-row:hover {
+  background: var(--portal-surface);
+}
+
+.monogram {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--portal-tile-ink);
+  background: oklch(var(--portal-tile-l) var(--portal-tile-c) var(--hue));
+  border-radius: 12px;
+}
+
+.app-text {
+  display: grid;
+  min-width: 0;
+}
+
+.app-name {
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.app-desc {
+  color: var(--portal-muted);
+  font-size: 14px;
+}
+
+.app-repo {
+  font-size: 13px;
+  color: var(--portal-muted);
+}
+
+/* App host */
+
+.app-host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-frame,
+.app-mount {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-frame[hidden] {
+  display: none;
+}
+
+.app-status {
+  padding: 48px 20px;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+}
+
+@media (max-width: 640px) {
+  .app-repo,
+  .user {
+    display: none;
+  }
+
+  .app-row {
+    grid-template-columns: 40px 1fr;
+  }
+
+  .monogram {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .launcher {
+    padding-top: 32px;
+  }
+}

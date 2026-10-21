@@ -1,0 +1,10 @@
+name = "portal-auth"
+main = "index.js"
+compatibility_date = "2024-09-23"
+
+# Secrets (set with: wrangler secret put <NAME>)
+#   GITHUB_CLIENT_ID      GitHub App client ID
+#   GITHUB_CLIENT_SECRET  GitHub App client secret
+#   ALLOWED_ORIGINS       comma-separated, e.g. "https://your-org.github.io,http://localhost:5173"
+#   ALLOWED_USERS         optional comma-separated GitHub logins; empty = anyone may sign in
+#                         (they'll still only see apps whose repos they can read)
