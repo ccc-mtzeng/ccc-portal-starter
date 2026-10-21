@@ -5,5 +5,5 @@ import react from "@vitejs/plugin-react";
 // Otherwise set it to "/<repo-name>/".
 export default defineConfig({
   plugins: [react()],
-  base: "/",
+  base: "/ccc-portal-starter/",
 });
